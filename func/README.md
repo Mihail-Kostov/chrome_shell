@@ -15,14 +15,16 @@
  - back
  - reback
  - home
-
-###not yet launched
-
-###untouched
- - sizing
+ - tab next
+ - tab back
  - tab new
  - tab close
  - scroll
- - click
- - search
  - move
+ - sizing
+
+###not yet launched
+ - search
+
+###untouched
+ - click
