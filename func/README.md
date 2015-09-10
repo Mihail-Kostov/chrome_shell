@@ -22,9 +22,9 @@
  - scroll
  - move
  - sizing
-
-###not yet launched
  - search
 
-###untouched
+###not yet launched
  - click
+
+###untouched

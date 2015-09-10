@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+if [ "${TMUX}" = "" ]
+then
+    echo $1 | pbcopy
+else
+    echo $1 | ./reattach-to-user-namespace pbcopy
+fi
