@@ -1,0 +1,11 @@
+SCRIPT_DIR=$(cd $(dirname $0);pwd)
+chrome () {
+    if [ $# -le 2 ]
+    then
+        if [ "$1" = "activate" ]
+        then
+            source $SCRIPT_DIR/activate
+        fi
+    fi
+}
+

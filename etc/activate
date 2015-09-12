@@ -1,0 +1,42 @@
+#!/bin/bash
+# setting
+#
+SCRIPT_DIR=$(cd $(dirname $0);pwd)
+FUNC_DIR=$SCRIPT_DIR/../func
+
+mouse-up() {
+    $FUNC_DIR/tab_new.scpt
+}
+
+dammy() {
+}
+
+if [[ "$SHELL" =~ "zsh" ]]
+then
+    zle -N mouse-up
+    zle -N dammy
+    bindkey "^[\e[A" mouse-up
+    # Esc + Up Key
+fi
+
+activate() {
+    if [[ "$PS1" =~ "\(chrome\)*" ]]
+    then
+        echo "already activate chrome mode."
+    else
+        export PS1="(chrome)"$PS1
+    fi
+}
+
+activate
+
+deactivate() {
+    if [[ "$PS1" =~ "\(chrome\)*" ]]
+    then
+        PS1=`echo $PS1 | sed -e "s/(chrome)//"`
+        export PS1="(chrome)"$PS1
+        source $SCRIPT_DIR/deactivate
+    else
+        echo "not active chrome mode."
+    fi
+}

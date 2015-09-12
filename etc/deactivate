@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo "deactive chrome mode."
+
+PS1=`echo $PS1 | sed -e "s/(chrome)//"`
+export PS1=$PS1
+
+unset -f activate
+unset -f deactivate
+
+if [[ "$SHELL" =~ "zsh" ]]
+then
+    bindkey "^[\e[A" dammy
+fi
