@@ -7,6 +7,7 @@ export PS1=$PS1
 
 unset -f activate
 unset -f deactivate
+unset -f mouse_up
 
 if [[ "$SHELL" =~ "zsh" ]]
 then

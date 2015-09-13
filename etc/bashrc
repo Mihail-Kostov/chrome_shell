@@ -1,11 +1,21 @@
-SCRIPT_DIR=$(cd $(dirname $0);pwd)
-chrome () {
+ETC_DIR=$(cd $(dirname $0);pwd)
+BIN_DIR="$ETC_DIR/../bin"
+SCRIPT_DIR="$ETC_DIR/../script"
+
+PY_CHROME_SHELL="$BIN_DIR/chrome_shell.py"
+
+chrome_shell() {
     if [ $# -le 2 ]
     then
         if [ "$1" = "activate" ]
         then
-            source $SCRIPT_DIR/activate
+            source "$ETC_DIR/activate"
+            exit 1
         fi
     fi
+    $PY_CHROME_SHELL "$@"
 }
 
+chrome(){
+    chrome_shell "$@"
+}

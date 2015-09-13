@@ -1,11 +1,11 @@
 #!/bin/bash
 # setting
 #
-SCRIPT_DIR=$(cd $(dirname $0);pwd)
-FUNC_DIR=$SCRIPT_DIR/../func
+ETC_DIR=$(cd $(dirname $0);pwd)
+SCRIPT_DIR="$ETC_DIR/../script"
 
-mouse-up() {
-    $FUNC_DIR/tab_new.scpt
+mouse_up() {
+    $SCRIPT_DIR/tab_new.scpt
 }
 
 dammy() {
@@ -13,9 +13,9 @@ dammy() {
 
 if [[ "$SHELL" =~ "zsh" ]]
 then
-    zle -N mouse-up
+    zle -N mouse_up
     zle -N dammy
-    bindkey "^[\e[A" mouse-up
+    bindkey "^[\e[A" mouse_up
     # Esc + Up Key
 fi
 
@@ -35,7 +35,7 @@ deactivate() {
     then
         PS1=`echo $PS1 | sed -e "s/(chrome)//"`
         export PS1="(chrome)"$PS1
-        source $SCRIPT_DIR/deactivate
+        source "$ETC_DIR/deactivate"
     else
         echo "not active chrome mode."
     fi

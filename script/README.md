@@ -23,8 +23,9 @@
  - move
  - sizing
  - search
+ - click
+ - mouse move
 
 ###not yet launched
- - click
 
 ###untouched
