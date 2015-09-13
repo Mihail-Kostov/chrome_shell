@@ -4,11 +4,12 @@ import sys
 from optparse import OptionParser
 import chrome_shell.command as cmd
 import chrome_shell.define as define
+import chrome_shell.util as util
 
 BIN_DIR = os.path.dirname(__file__)
 SCRIPT_DIR = BIN_DIR + "/../scripts"
 
-parser = OptionParser(usage=define.get_usage_message(),
+parser = OptionParser(usage=util.get_usage_message(),
     prog=define.PROG, version=define.VERSION, add_help_option=False)
 parser.add_option("-h", "--help", dest="help",
     action="store_true", help="Show help")

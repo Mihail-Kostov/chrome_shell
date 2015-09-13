@@ -1,6 +1,7 @@
 import os
 from optparse import OptionParser
 import chrome_shell.define as define
+import chrome_shell.util as util
 
 SRC_DIR = os.path.dirname(__file__)
 SCRIPT_DIR = SRC_DIR + "/../../scripts"
@@ -10,9 +11,9 @@ class Command(object):
         self.name = name
         self.args = args
         self.msg = "%prog COMMAND [OPTIONS]" + "\n" + "COMMAND:" + "\n"
-        self.msg += define.get_message(self.name)
-        self.err_msg = define.get_err_message(self.name)
-        self.parser = OptionParser(usage=self.msg[: -2], prog=define.PROG,
+        self.msg += util.get_message(self.name)
+        self.err_msg = util.get_err_message(self.name)
+        self.parser = OptionParser(usage=self.msg[: -1], prog=define.PROG,
             version=define.VERSION, add_help_option=False)
         self.parser.disable_interspersed_args()
 

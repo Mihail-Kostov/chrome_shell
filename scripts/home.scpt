@@ -11,3 +11,4 @@ if application appName is running then
         end tell
     end tell
 end if
+
