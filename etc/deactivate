@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "deactive chrome mode."
+echo "deactivate chrome mode."
 
 PS1=`echo $PS1 | sed -e "s/(chrome)//"`
 export PS1=$PS1

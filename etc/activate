@@ -24,6 +24,8 @@ activate() {
     then
         echo "already activate chrome mode."
     else
+        echo "activate chrome mode."
+        echo "if you want to deactivate, you execute \`deactivate\` command."
         export PS1="(chrome)"$PS1
     fi
 }
