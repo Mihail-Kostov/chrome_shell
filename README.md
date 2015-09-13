@@ -2,6 +2,8 @@
 
 batting open/close command.
 
+need to modify help message, add activate command.
+
 ## Usage: chrome_shell COMMAND [OPTIONS]
 ###COMMAND
 
