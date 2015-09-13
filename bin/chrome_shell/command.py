@@ -9,7 +9,7 @@ class Command(object):
     def __init__(self, name, args):
         self.name = name
         self.args = args
-        self.msg = "%prog COMMAND [OPTIONS]" + "\n" + "COMMAND: " + "\n"
+        self.msg = "%prog COMMAND [OPTIONS]" + "\n" + "COMMAND:" + "\n"
         self.msg += define.get_message(self.name)
         self.err_msg = define.get_err_message(self.name)
         self.parser = OptionParser(usage=self.msg[: -2], prog=define.PROG,

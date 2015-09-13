@@ -97,6 +97,7 @@ def get_message(command_name):
 
 def get_usage_message():
     msg = "%prog COMMAND [OPTIONS]" + "\n"
+    msg += "COMMAND:" + "\n"
     for i in command_dict:
         msg += get_message(i)
     msg = msg[: -2]
