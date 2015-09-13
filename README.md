@@ -1,4 +1,7 @@
 # crome_shell
+
+batting open/close command.
+
 ## Usage: chrome_shell COMMAND [OPTIONS]
 ###COMMAND
 
