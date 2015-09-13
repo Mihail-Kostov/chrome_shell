@@ -1,6 +1,6 @@
 ETC_DIR=$(cd $(dirname $0);pwd)
 BIN_DIR="$ETC_DIR/../bin"
-SCRIPT_DIR="$ETC_DIR/../script"
+SCRIPT_DIR="$ETC_DIR/../scripts"
 
 PY_CHROME_SHELL="$BIN_DIR/chrome_shell.py"
 
@@ -10,7 +10,7 @@ chrome_shell() {
         if [ "$1" = "activate" ]
         then
             source "$ETC_DIR/activate"
-            exit 1
+            return 1
         fi
     fi
     $PY_CHROME_SHELL "$@"

@@ -2,7 +2,7 @@
 # setting
 #
 ETC_DIR=$(cd $(dirname $0);pwd)
-SCRIPT_DIR="$ETC_DIR/../script"
+SCRIPT_DIR="$ETC_DIR/../scripts"
 
 mouse_up() {
     $SCRIPT_DIR/tab_new.scpt
