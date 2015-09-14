@@ -1,11 +1,26 @@
-# crome_shell
+# chrome_shell
 
-batting open/close command.
+##Instllation
 
-need to modify help message, add activate command.
+The recommended way to download and install chrome_shell is to execute theses statements in your shell:
 
-## Usage: chrome_shell COMMAND [OPTIONS]
-###COMMAND
+    git clone https://github.com/kota99949/shell-chrome.git
+
+Please add the following line to the end of your ~/.bashrc:
+
+    [[ -s <YOUR_CLONE_DIR>/etc/bashrc ]] && source <YOUR_CLONE_DIR>/etc/bashrc
+
+##Usage: chrome_shell SUBCOMMAND [OPTIONS]
+
+###Sub command:
+
+    activate
+
+activate chrome mode. `chrome_shell` command can be ommited in this mode.
+
+    deactivate
+
+deactivate chrome mode. in chrome mode, this command can be used.
 
     click [c|dc|tc|rc]
 
@@ -15,17 +30,17 @@ click on mouse cursor, single/double/triple/right.
 
 move mouse cursor, upper/lower/right/left.
 
-    wmove [u|d|r|l]
+    wmove [r|l]
 
-move window, upper/lower/right/left.
+move window, right/left.
 
     scroll [u|d|r|l]
 
 scroll window, upper/lower/right/left.
 
-    wsize [hu|hd|wu|wd|std|full|norm]
+    wsize [hu|hd|wu|wd|min|max|full|norm]
 
-change size of window, twice-height/half-height/twice-width/half-width/standard-size/full-screen/normal-screen.
+change size of window, twice-height/half-height/twice-width/half-width/min-size/max-size/full-screen/normal-screen.
 
     tab [nw|cl|nx|bk]
 
@@ -43,7 +58,7 @@ next web page, if exist history.
 
 reload web page.
 
-    cancel
+    abort
 
 cancel loading web page.
 
@@ -51,23 +66,23 @@ cancel loading web page.
 
 move home of chrome.
 
-    launch
+    start
 
 launch chrome application.
 
-    relaunch
+    restart
 
 relaunch chrome application.
 
-    quit
+    stop
 
 shutdown chrome application.
 
-    open
+    wopen
 
 open chrome window.
 
-    close
+    wclose
 
 close chrome window.
 
@@ -77,9 +92,16 @@ search by your default search engine.
 
     url [url]
 
-go to url
+go to url.
+
+    typo [keyword]
+
+input keyword to web form.
 
 ###Options:
 
-    --version   show program's version number and exit
-    -h, --help  Show help
+    --version
+show program's version number and exit
+
+    -h, --help
+Show help
