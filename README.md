@@ -4,7 +4,7 @@
 
 The recommended way to download and install chrome_shell is to execute theses statements in your shell:
 
-    git clone https://github.com/kota99949/shell-chrome.git
+    git clone https://github.com/kota999/shell-chrome.git
 
 Please add the following line to the end of your ~/.bashrc:
 
