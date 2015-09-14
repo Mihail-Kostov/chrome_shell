@@ -10,7 +10,7 @@ class Command(object):
     def __init__(self, name, args):
         self.name = name.lower()
         self.args = args
-        self.msg = "%prog COMMAND [OPTIONS]" + "\n" + "COMMAND:" + "\n"
+        self.msg = "%prog SUBCOMMAND [OPTIONS]" + "\n" + "SUBCOMMAND:" + "\n"
         self.msg += util.get_message(self.name)
         self.err_msg = util.get_err_message(self.name)
         self.parser = OptionParser(usage=self.msg[: -1], prog=define.PROG,
@@ -92,7 +92,7 @@ class Command(object):
             self.parser.error(util.get_err_option(self.name))
             return
 
-        os.system(path)
+        self.execute(path)
         return
 
     def run_mouse(self):
@@ -111,7 +111,7 @@ class Command(object):
             path = ""
 
         if path != "" and os.path.exists(path) :
-            os.system(path + option)
+            self.execute(path + option)
         else:
             self.parser.error(util.get_err_option(self.name))
         return
@@ -125,7 +125,7 @@ class Command(object):
             path = SCRIPT_DIR + "/move_right.scpt"
 
         if path != "" and os.path.exists(path) :
-            os.system(path)
+            self.execute(path)
         else:
             self.parser.error(util.get_err_option(self.name))
         return
@@ -143,7 +143,7 @@ class Command(object):
             path = SCRIPT_DIR + "/left_scroll.scpt"
 
         if path != "" and os.path.exists(path) :
-            os.system(path)
+            self.execute(path)
         else:
             self.parser.error(util.get_err_option(self.name))
         return
@@ -169,7 +169,7 @@ class Command(object):
                 path = SCRIPT_DIR + "/return_fill_title.scpt"
 
         if path != "" and os.path.exists(path) :
-            os.system(path)
+            self.execute(path)
         else:
             self.parser.error(util.get_err_option(self.name))
         return
@@ -187,7 +187,7 @@ class Command(object):
             path = SCRIPT_DIR + "/tab_back.scpt"
 
         if path != "" and os.path.exists(path) :
-            os.system(path)
+            self.execute(path)
         else:
             self.parser.error(util.get_err_option(self.name))
         return
@@ -195,61 +195,61 @@ class Command(object):
     def run_back(self):
         path = SCRIPT_DIR + "/back.scpt"
         if os.path.exists(path):
-            os.system(path)
+            self.execute(path)
         return
 
     def run_next(self):
         path = SCRIPT_DIR + "/next.scpt"
         if os.path.exists(path):
-            os.system(path)
+            self.execute(path)
         return
 
     def run_reload(self):
         path = SCRIPT_DIR + "/reload.scpt"
         if os.path.exists(path):
-            os.system(path)
+            self.execute(path)
         return
 
     def run_abort(self):
         path = SCRIPT_DIR + "/load_cancel.scpt"
         if os.path.exists(path):
-            os.system(path)
+            self.execute(path)
         return
 
     def run_home(self):
         path = SCRIPT_DIR + "/home.scpt"
         if os.path.exists(path):
-            os.system(path)
+            self.execute(path)
         return
 
     def run_start(self):
         path = SCRIPT_DIR + "/activate.scpt"
         if os.path.exists(path):
-            os.system(path)
+            self.execute(path)
         return
 
     def run_restart(self):
         path = SCRIPT_DIR + "/restart.scpt"
         if os.path.exists(path):
-            os.system(path)
+            self.execute(path)
         return
 
     def run_stop(self):
         path = SCRIPT_DIR + "/quit.scpt"
         if os.path.exists(path):
-            os.system(path)
+            self.execute(path)
         return
 
     def run_wopen(self):
         path = SCRIPT_DIR + "/reopen.scpt"
         if os.path.exists(path):
-            os.system(path)
+            self.execute(path)
         return
 
     def run_wclose(self):
         path = SCRIPT_DIR + "/close.scpt"
         if os.path.exists(path):
-            os.system(path)
+            self.execute(path)
         return
 
     def run_search(self):
@@ -257,14 +257,14 @@ class Command(object):
         if os.path.exists(path):
             for arg in self.args:
                 path += " " + arg
-            os.system(path)
+            self.execute(path)
         return
 
     def run_url(self):
         path = SCRIPT_DIR + "/open_url.scpt"
         if os.path.exists(path):
             path += " " + self.args[0]
-            os.system(path)
+            self.execute(path)
         return
 
     def run_typo(self):
@@ -272,5 +272,8 @@ class Command(object):
         if os.path.exists(path):
             for arg in self.args:
                 path += " " + arg
-            os.system(path)
+            self.execute(path)
         return
+
+    def execute(self, path):
+        os.system(path + " >/dev/null 2>&1")

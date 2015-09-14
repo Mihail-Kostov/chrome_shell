@@ -10,7 +10,25 @@ chrome_shell() {
         if [ "$1" = "activate" ]
         then
             source "$ETC_DIR/activate"
-            return 1
+            return 0
+        fi
+        if [ "$1" = "deactivate" ]
+        then
+            which $1 >/dev/null 2>&1
+            if [ "$?" = "1" ]
+            then
+                echo "Usage: chrome_shell SUBCOMMAND [OPTIONS]"
+                echo "SUBCOMMAND: "
+                echo " deactivate"
+                echo "deactivate chrome mode. in chrome mode, this command can be used."
+                echo ""
+                echo "chrome_shell: error: Command \`deactivate\` can not be used."
+                return 1
+            else
+                source "$ETC_DIR/activate"
+                deactivate
+                return 0
+            fi
         fi
     fi
     $PY_CHROME_SHELL "$@"
