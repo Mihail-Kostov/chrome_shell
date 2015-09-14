@@ -2,6 +2,10 @@
 set appName to "Google Chrome"
 set HomeURL to "https://www.google.co.jp"
 
+tell application "System Events"
+    set homeApp to name of (path to frontmost application)
+end tell
+
 if application appName is running then
     set pID to id of application "Google Chrome"
     tell application "System Events"
@@ -11,3 +15,9 @@ if application appName is running then
         end tell
     end tell
 end if
+
+delay 0.1
+
+tell application homeApp
+    activate
+end tell

@@ -2,9 +2,17 @@
 set appName to "Google Chrome"
 set HomeURL to "https://www.google.co.jp"
 
-if application appName is running then
-    tell application appName to quit
+tell application "System Events"
+    set homeApp to name of (path to frontmost application)
+end tell
+
+tell application appName
+    quit
     repeat while application appName is running
-        delay 0.1
+        delay 0.05
     end repeat
-end if
+end tell
+
+tell application homeApp
+    activate
+end tell

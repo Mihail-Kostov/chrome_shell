@@ -1,7 +1,6 @@
 #!/usr/bin/osascript
 on run argv
     set appName to "Google Chrome"
-    set HomeURL to "https://www.google.co.jp"
 
     set word_txt to ""
     repeat with char_i in argv
@@ -25,11 +24,6 @@ on run argv
 
             delay 0.5
             tell application process appName
-                key down {option}
-                key down {command}
-                key code 3
-                key up {command}
-                key up {option}
 
                 do shell script thisFolder & "paste " & word_txt
 
@@ -42,6 +36,7 @@ on run argv
 
         end tell
     end if
+
     tell application homeApp
         activate
     end tell

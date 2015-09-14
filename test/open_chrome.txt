@@ -1,3 +1,4 @@
+#!/usr/bin/env osascript
 tell application "Google Chrome"
 activate
 end tell

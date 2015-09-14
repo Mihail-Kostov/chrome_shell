@@ -25,13 +25,13 @@ def get_message(command_name):
         msg += "move mouse cursor, upper/lower/right/left." + "\n"
     elif command_name == "wmove":
         msg += "    %s "  % command_name + get_option_list(command_name) + "\n"
-        msg += "move window, upper/lower/right/left." + "\n"
+        msg += "move window, right/left." + "\n"
     elif command_name == "scroll":
         msg += "   %s "  % command_name + get_option_list(command_name) + "\n"
         msg += "scroll window, upper/lower/right/left." + "\n"
     elif command_name == "wsize":
         msg += "    %s "  % command_name + get_option_list(command_name) + "\n"
-        msg += "change size of window, twice-height/half-height/twice-width/half-width/standard-size/full-screen/normal-screen." + "\n"
+        msg += "change size of window, twice-height/half-height/twice-width/half-width/min-size/max-size/full-screen/normal-screen." + "\n"
     elif command_name == "tab":
         msg += "      %s "  % command_name + get_option_list(command_name) + "\n"
         msg += "tab operation, new/close/next/back." + "\n"
@@ -44,26 +44,26 @@ def get_message(command_name):
     elif command_name == "reload":
         msg += "   %s "  % command_name + get_option_list(command_name) + "\n"
         msg += "reload web page." + "\n"
-    elif command_name == "cancel":
-        msg += "   %s "  % command_name + get_option_list(command_name) + "\n"
+    elif command_name == "abort":
+        msg += "    %s "  % command_name + get_option_list(command_name) + "\n"
         msg += "cancel loading web page." + "\n"
     elif command_name == "home":
         msg += "     %s "  % command_name + get_option_list(command_name) + "\n"
         msg += "move home of chrome." + "\n"
-    elif command_name == "launch":
-        msg += "   %s "  % command_name + get_option_list(command_name) + "\n"
+    elif command_name == "start":
+        msg += "    %s "  % command_name + get_option_list(command_name) + "\n"
         msg += "launch chrome application." + "\n"
-    elif command_name == "relaunch":
-        msg += " %s "  % command_name + get_option_list(command_name) + "\n"
+    elif command_name == "restart":
+        msg += "  %s "  % command_name + get_option_list(command_name) + "\n"
         msg += "relaunch chrome application." + "\n"
-    elif command_name == "quit":
+    elif command_name == "stop":
         msg += "     %s "  % command_name + get_option_list(command_name) + "\n"
         msg += "shutdown chrome application." + "\n"
-    elif command_name == "open":
-        msg += "     %s "  % command_name + get_option_list(command_name) + "\n"
-        msg += "open chrome window." + "\n"
-    elif command_name == "close":
+    elif command_name == "wopen":
         msg += "    %s "  % command_name + get_option_list(command_name) + "\n"
+        msg += "open chrome window." + "\n"
+    elif command_name == "wclose":
+        msg += "   %s "  % command_name + get_option_list(command_name) + "\n"
         msg += "close chrome window." + "\n"
     elif command_name == "search":
         msg += "   %s "  % command_name + get_option_list(command_name) + "\n"
@@ -71,6 +71,9 @@ def get_message(command_name):
     elif command_name == "url":
         msg += "      %s "  % command_name + get_option_list(command_name) + "\n"
         msg += "go to url." + "\n"
+    elif command_name == "typo":
+        msg += "     %s "  % command_name + get_option_list(command_name) + "\n"
+        msg += "input keyword to web form." + "\n"
     return msg
 
 
@@ -88,3 +91,5 @@ def get_err_message(name):
     else:
         return "Command `%s` is not needed option." % name
 
+def get_err_option(name):
+    return "Command `%s` option is `%s`" %(name, get_option_list(name))

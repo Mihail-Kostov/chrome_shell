@@ -1,7 +1,6 @@
 #!/usr/bin/osascript
 on run argv
     set x to item 1 of argv
-    --set y to item 2 of argv
     if x = "r" then
         set x to "+20"
         set y to "+0"
@@ -19,6 +18,22 @@ on run argv
 end run
 
 on move_mouse(x, y)
-    --do shell script "/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -e \"require 'osx/cocoa'\" -e \"OSX::CGWarpMouseCursorPosition(OSX::CGPointMake(" & x & "," & y & "))\""
-    do shell script "./cliclick m:" & x & "," & y
+    tell application "Finder"
+        set thisFolder to parent of (path to me) as text
+    end tell
+    set thisFolder to replaceText(thisFolder, ":", "/")
+    set thisFolder to replaceText(thisFolder, "Macintosh HD", "")
+
+    do shell script thisFolder & "cliclick m:" & x & "," & y
 end move_mouse
+
+on replaceText(theText, serchStr, replaceStr)
+    set tmp to AppleScript's text item delimiters
+    set AppleScript's text item delimiters to serchStr
+    set theList to every text item of theText
+    set AppleScript's text item delimiters to replaceStr
+    set theText to theList as string
+    set AppleScript's text item delimiters to tmp
+    return theText
+end replaceText
+

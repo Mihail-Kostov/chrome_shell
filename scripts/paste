@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
+
+SCRIPT_DIR=$(cd $(dirname $0);pwd)
+
 if [ "${TMUX}" = "" ]
 then
     echo $1 | pbcopy
 else
-    echo $1 | ./reattach-to-user-namespace pbcopy
+    echo $1 | "${SCRIPT_DIR}/reattach-to-user-namespace" pbcopy
 fi
