@@ -4,8 +4,20 @@
 ETC_DIR=$(cd $(dirname $0);pwd)
 SCRIPT_DIR="$ETC_DIR/../scripts"
 
-mouse_up() {
-    $SCRIPT_DIR/tab_new.scpt
+_mouse_up() {
+    chrome_shell mouse u
+}
+
+_mouse_down() {
+    chrome_shell mouse d
+}
+
+_mouse_right() {
+    chrome_shell mouse r
+}
+
+_mouse_left() {
+    chrome_shell mouse l
 }
 
 dammy() {
@@ -13,9 +25,15 @@ dammy() {
 
 if [[ "$SHELL" =~ "zsh" ]]
 then
-    zle -N mouse_up
+    zle -N _mouse_up
+    zle -N _mouse_down
+    zle -N _mouse_right
+    zle -N _mouse_left
     zle -N dammy
-    bindkey "^[\e[A" mouse_up
+    bindkey "^[\e[A" _mouse_up
+    bindkey "^[\e[B" _mouse_down
+    bindkey "^[\e[C" _mouse_right
+    bindkey "^[\e[D" _mouse_left
     # Esc + Up Key
 fi
 
@@ -41,4 +59,80 @@ deactivate() {
     else
         echo "not active chrome mode."
     fi
+}
+
+click() {
+    chrome_shell click "$@"
+}
+
+mouse() {
+    chrome_shell mouse "$@"
+}
+
+wmove() {
+    chrome_shell wmove "$@"
+}
+
+scroll() {
+    chrome_shell scroll "$@"
+}
+
+wsize() {
+    chrome_shell wsize "$@"
+}
+
+tab() {
+    chrome_shell tab "$@"
+}
+
+back() {
+    chrome_shell back "$@"
+}
+
+next() {
+    chrome_shell next "$@"
+}
+
+reload() {
+    chrome_shell reload "$@"
+}
+
+abort() {
+    chrome_shell abort "$@"
+}
+
+home() {
+    chrome_shell home "$@"
+}
+
+start() {
+    chrome_shell start "$@"
+}
+
+restart() {
+    chrome_shell restart "$@"
+}
+
+stop() {
+    chrome_shell stop "$@"
+}
+
+wopen() {
+    chrome_shell wopen "$@"
+}
+
+wclose() {
+    chrome_shell wclose "$@"
+}
+
+search() {
+    chrome_shell search "$@"
+}
+
+url() {
+    chrome_shell url "$@"
+}
+
+typo() {
+    chrome_shell typo "$@"
 }

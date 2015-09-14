@@ -7,9 +7,34 @@ export PS1=$PS1
 
 unset -f activate
 unset -f deactivate
-unset -f mouse_up
+unset -f _mouse_up
+unset -f _mouse_down
+unset -f _mouse_right
+unset -f _mouse_left
+unset -f click
+unset -f mouse
+unset -f wmove
+unset -f scroll
+unset -f wsize
+unset -f tab
+unset -f back
+unset -f next
+unset -f reload
+unset -f abort
+unset -f home
+unset -f start
+unset -f restart
+unset -f stop
+unset -f wopen
+unset -f wclose
+unset -f search
+unset -f url
+unset -f typo
 
 if [[ "$SHELL" =~ "zsh" ]]
 then
     bindkey "^[\e[A" dammy
+    bindkey "^[\e[B" dammy
+    bindkey "^[\e[C" dammy
+    bindkey "^[\e[D" dammy
 fi
