@@ -1,5 +1,7 @@
 # chrome_shell
 
+not cope with bash
+
 ##Instllation
 
 The recommended way to download and install chrome_shell is to execute theses statements in your shell:
