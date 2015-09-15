@@ -1,0 +1,94 @@
+#!/bin/bash
+ETC_DIR=$(cd $(dirname ${BASH_SOURCE:-$0});pwd)
+
+key_array=("1" "2" "3" "4" "5" "6" "7" "8" "9" "0" "\-" "\^" "\\")
+key_array+=("\!" "\"" "#" "\$" "&" "\'" "(" ")" "=" "~" "|")
+key_array+=("q" "w" "e" "r" "t" "y" "u" "i" "o" "p" "@" "[")
+key_array+=("Q" "W" "E" "R" "T" "Y" "U" "I" "O" "P" "\`" "\{")
+key_array+=("a" "s" "d" "f" "g" "h" "j" "k" "l" "\;" ":" "]")
+key_array+=("A" "S" "D" "F" "G" "H" "J" "K" "L" "+" "\*" "\}")
+key_array+=("z" "x" "c" "v" "b" "n" "m" "," "." "/" "_")
+key_array+=("Z" "X" "C" "V" "B" "N" "M" "\<" "\>" "\?" "\_")
+
+_deactivate_mouse_mode() {
+
+    for key in "${key_array[@]}"
+    do
+        if [[ "$SHELL" =~ "zsh" ]]
+        then
+            bindkey $key self-insert
+        else
+            bind "${key}":self-insert >/dev/null 2>&1
+        fi
+    done
+    if [[ "$SHELL" =~ "zsh" ]]
+    then
+        bindkey "\e[A" up-line-or-history
+        bindkey "\e[B" down-line-or-history
+        bindkey "\e[C" forward-char
+        bindkey "\e[D" backward-char
+    else
+        bind '"\e[A":previous-history'
+        bind '"\e[B":next-history'
+        bind '"\e[C":forward-char'
+        bind '"\e[D":backward-char'
+    fi
+
+}
+
+_mouse_up2() {
+    chrome_shell mouse u2
+    _activate_mouse_mode
+}
+
+_mouse_down2() {
+    chrome_shell mouse d2
+    _activate_mouse_mode
+}
+
+_mouse_right2() {
+    chrome_shell mouse r2
+    _activate_mouse_mode
+}
+
+_mouse_left2() {
+    chrome_shell mouse l2
+    _activate_mouse_mode
+}
+
+if [[ "$SHELL" =~ "zsh" ]]
+then
+    zle -N _deactivate_mouse_mode
+    zle -N _mouse_up2
+    zle -N _mouse_down2
+    zle -N _mouse_right2
+    zle -N _mouse_left2
+fi
+
+_activate_mouse_mode() {
+
+    for key in "${key_array[@]}"
+    do
+        if [[ "$SHELL" =~ "zsh" ]]
+        then
+            bindkey $key _deactivate_mouse_mode
+        else
+            echo "'\"${key}\":_deactivate_mouse_mode'" #>/dev/null 2>&1
+            bind -x "'\"${key}\":_deactivate_mouse_mode'" #>/dev/null 2>&1
+        fi
+    done
+    if [[ "$SHELL" =~ "zsh" ]]
+    then
+        bindkey "\e[A" _mouse_up2
+        bindkey "\e[B" _mouse_down2
+        bindkey "\e[C" _mouse_right2
+        bindkey "\e[D" _mouse_left2
+    else
+        bind -x '"\e[A":_mouse_up'
+        bind -x '"\e[B":_mouse_down'
+        bind -x '"\e[C":_mouse_right'
+        bind -x '"\e[D":_mouse_left'
+    fi
+
+}
+

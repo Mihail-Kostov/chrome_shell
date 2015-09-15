@@ -30,6 +30,8 @@ unset -f wclose
 unset -f search
 unset -f url
 unset -f typo
+unset -f _activate_mouse_mode >/dev/null 2>&1
+unset -f _deactivate_mouse_mode >/dev/null 2>&1
 
 if [[ "$SHELL" =~ "zsh" ]]
 then
@@ -37,4 +39,9 @@ then
     bindkey "^[\e[B" dammy
     bindkey "^[\e[C" dammy
     bindkey "^[\e[D" dammy
+else
+    bind -r "\M-\e[A"
+    bind -r "\M-\e[B"
+    bind -r "\M-\e[C"
+    bind -r "\M-\e[D"
 fi

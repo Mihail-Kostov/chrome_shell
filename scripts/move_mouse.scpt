@@ -13,6 +13,18 @@ on run argv
     else if x = "d" then
         set x to "+0"
         set y to "+20"
+    else if x = "r2" then
+        set x to "+50"
+        set y to "+0"
+    else if x = "l2" then
+        set x to "-50"
+        set y to "+0"
+    else if x = "u2" then
+        set x to "+0"
+        set y to "-50"
+    else if x = "d2" then
+        set x to "+0"
+        set y to "+50"
     end if
     move_mouse(x, y)
 end run

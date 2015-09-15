@@ -107,6 +107,14 @@ class Command(object):
             option = " r"
         elif arg.lower() == "l" or arg.lower() == "left":
             option = " l"
+        elif arg.lower() == "u2":
+            option = " u2"
+        elif arg.lower() == "d2":
+            option = " d2"
+        elif arg.lower() == "r2":
+            option = " r2"
+        elif arg.lower() == "l2":
+            option = " l2"
         else :
             path = ""
 

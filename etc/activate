@@ -1,26 +1,34 @@
 #!/bin/bash
-# setting
 #
-ETC_DIR=$(cd $(dirname $0);pwd)
+ETC_DIR=$(cd $(dirname ${BASH_SOURCE:-$0});pwd)
 SCRIPT_DIR="$ETC_DIR/../scripts"
 
 _mouse_up() {
     chrome_shell mouse u
+    source "$ETC_DIR/keybind"
+    _activate_mouse_mode
 }
 
 _mouse_down() {
     chrome_shell mouse d
+    source "$ETC_DIR/keybind"
+    _activate_mouse_mode
 }
 
 _mouse_right() {
     chrome_shell mouse r
+    source "$ETC_DIR/keybind"
+    _activate_mouse_mode
 }
 
 _mouse_left() {
     chrome_shell mouse l
+    source "$ETC_DIR/keybind"
+    _activate_mouse_mode
 }
 
 dammy() {
+    echo >/dev/null 2>&1
 }
 
 if [[ "$SHELL" =~ "zsh" ]]
@@ -35,10 +43,17 @@ then
     bindkey "^[\e[C" _mouse_right
     bindkey "^[\e[D" _mouse_left
     # Esc + Up Key
+else
+    bind '"\M-\e[A":_mouse_up'
+    bind '"\M-\e[B":_mouse_down'
+    bind '"\M-\e[C":_mouse_right'
+    bind '"\M-\e[D":_mouse_left'
+    # Esc + Up Key
 fi
 
+
 activate() {
-    if [[ "$PS1" =~ "\(chrome\)*" ]]
+    if [[ "$PS1" =~ "(chrome)" ]]
     then
         echo "already activate chrome mode."
     else
@@ -51,7 +66,7 @@ activate() {
 activate
 
 deactivate() {
-    if [[ "$PS1" =~ "\(chrome\)*" ]]
+    if [[ "$PS1" =~ "(chrome)" ]]
     then
         PS1=`echo $PS1 | sed -e "s/(chrome)//"`
         export PS1="(chrome)"$PS1

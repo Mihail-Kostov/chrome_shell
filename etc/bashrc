@@ -1,4 +1,4 @@
-ETC_DIR=$(cd $(dirname $0);pwd)
+ETC_DIR=$(cd $(dirname ${BASH_SOURCE:-$0});pwd)
 BIN_DIR="$ETC_DIR/../bin"
 SCRIPT_DIR="$ETC_DIR/../scripts"
 
