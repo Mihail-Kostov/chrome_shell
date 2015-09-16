@@ -1,7 +1,5 @@
 # chrome_shell
 
-not cope with bash
-
 ##Instllation
 
 The recommended way to download and install chrome_shell is to execute theses statements in your shell:
@@ -11,6 +9,32 @@ The recommended way to download and install chrome_shell is to execute theses st
 Please add the following line to the end of your ~/.bashrc:
 
     [[ -s <YOUR_CLONE_DIR>/etc/bashrc ]] && source <YOUR_CLONE_DIR>/etc/bashrc
+
+##Simple Usage
+
+activate chrome mode.
+
+    chrome activate
+
+deactivate chrome mode.
+
+    deactivate
+
+operate chrome window.
+
+    wopen                  # open chrome window
+    wclose                 # close chrome window
+    tab [new|rm|next|back] # tab operation
+    search <keyword>       # web search
+    click [c|dc|tc|rc]     # single/double/triple/right click
+    back                   # move before web page
+    next                   # move next web page
+
+control mouse on chrome mode.
+
+ESC+→ or ESC+← or ESC+↑ or ESC+↓  : move mouse and activate mouse control mode.<br>
+→ or ← or ↑ or ↓                  : move mouse on mouse control mode. <br>
+if you deactivate mouse control mode, you type any key.
 
 ##Usage: chrome_shell SUBCOMMAND [OPTIONS]
 
