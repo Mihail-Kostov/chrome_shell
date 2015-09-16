@@ -79,7 +79,7 @@ def get_message(command_name):
 
 def get_usage_message():
     msg = "%prog SUBCOMMAND [OPTIONS]" + "\n"
-    msg += "SUBCOMMAND:" + "\n"
+    msg += "Subcommand:" + "\n"
     msg += "   activate " + "\n" + "activate chrome mode. `chrome_shell` command can be ommited in this mode." + "\n"
     msg += " deactivate " + "\n" + "deactivate chrome mode. in chrome mode, this command can be used. " + "\n"
     for i in command_dict:

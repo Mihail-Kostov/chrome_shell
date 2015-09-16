@@ -10,7 +10,7 @@ class Command(object):
     def __init__(self, name, args):
         self.name = name.lower()
         self.args = args
-        self.msg = "%prog SUBCOMMAND [OPTIONS]" + "\n" + "SUBCOMMAND:" + "\n"
+        self.msg = "%prog SUBCOMMAND [OPTIONS]" + "\n" + "Subcommand:" + "\n"
         self.msg += util.get_message(self.name)
         self.err_msg = util.get_err_message(self.name)
         self.parser = OptionParser(usage=self.msg[: -1], prog=define.PROG,

@@ -9,7 +9,6 @@ key_array+=("a" "s" "d" "f" "g" "h" "j" "k" "l" "\;" ":" "]")
 key_array+=("A" "S" "D" "F" "G" "H" "J" "K" "L" "+" "\*" "\}")
 key_array+=("z" "x" "c" "v" "b" "n" "m" "," "." "/" "_")
 key_array+=("Z" "X" "C" "V" "B" "N" "M" "\<" "\>" "\?" "\_")
-key_array+=(" ")
 
 _deactivate_mouse_mode() {
 
@@ -19,7 +18,8 @@ _deactivate_mouse_mode() {
         then
             bindkey $key self-insert
         else
-            bind "${key}":self-insert >/dev/null 2>&1
+            #bind "${key}":self-insert >/dev/null 2>&1
+            source "$ETC_DIR/onkey"
         fi
     done
     if [[ "$SHELL" =~ "zsh" ]]
@@ -106,8 +106,8 @@ _activate_mouse_mode() {
         then
             bindkey $key _deactivate_mouse_mode
         else
-            echo >/dev/null 2>&1
-            #bind "'"\"${key}\":\"_deactivate_mouse_mode\\C-m\""'"
+            #bind -x "'"\"${key}\":\"_deactivate_mouse_mode\""'"
+            source "$ETC_DIR/unkey"
         fi
     done
     if [[ "$SHELL" =~ "zsh" ]]

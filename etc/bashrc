@@ -3,6 +3,8 @@ BIN_DIR="$ETC_DIR/../bin"
 SCRIPT_DIR="$ETC_DIR/../scripts"
 
 PY_CHROME_SHELL="$BIN_DIR/chrome_shell.py"
+export HISTIGNORE="$HISTIGNORE:_mouse_up:__mouse_up:___mouse_up:_mouse_down:__mouse_down:___mouse_down"
+export HISTIGNORE="$HISTIGNORE:_mouse_right:__mouse_right:___mouse_right:_mouse_left:__mouse_left:___mouse_left"
 
 chrome_shell() {
     if [ $# -le 2 ]
