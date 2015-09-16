@@ -44,10 +44,10 @@ then
     bindkey "^[\e[D" _mouse_left
     # Esc + Up Key
 else
-    bind '"\M-\e[A":_mouse_up'
-    bind '"\M-\e[B":_mouse_down'
-    bind '"\M-\e[C":_mouse_right'
-    bind '"\M-\e[D":_mouse_left'
+    bind '"\e\e[A":"_mouse_up\C-m"'
+    bind '"\e\e[B":"_mouse_down\C-m"'
+    bind '"\e\e[C":"_mouse_right\C-m"'
+    bind '"\e\e[D":"_mouse_left\C-m"'
     # Esc + Up Key
 fi
 

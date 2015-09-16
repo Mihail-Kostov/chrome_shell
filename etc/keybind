@@ -9,6 +9,7 @@ key_array+=("a" "s" "d" "f" "g" "h" "j" "k" "l" "\;" ":" "]")
 key_array+=("A" "S" "D" "F" "G" "H" "J" "K" "L" "+" "\*" "\}")
 key_array+=("z" "x" "c" "v" "b" "n" "m" "," "." "/" "_")
 key_array+=("Z" "X" "C" "V" "B" "N" "M" "\<" "\>" "\?" "\_")
+key_array+=(" ")
 
 _deactivate_mouse_mode() {
 
@@ -27,42 +28,74 @@ _deactivate_mouse_mode() {
         bindkey "\e[B" down-line-or-history
         bindkey "\e[C" forward-char
         bindkey "\e[D" backward-char
+        bindkey -r "\e[A\e[A"
+        bindkey -r "\e[B\e[B"
+        bindkey -r "\e[C\e[C"
+        bindkey -r "\e[D\e[D"
     else
         bind '"\e[A":previous-history'
         bind '"\e[B":next-history'
         bind '"\e[C":forward-char'
         bind '"\e[D":backward-char'
+        bind -r "\e[A\e[A"
+        bind -r "\e[B\e[B"
+        bind -r "\e[C\e[C"
+        bind -r "\e[D\e[D"
     fi
 
 }
 
-_mouse_up2() {
-    chrome_shell mouse u2
+__mouse_up() {
+    chrome_shell mouse u u
     _activate_mouse_mode
 }
 
-_mouse_down2() {
-    chrome_shell mouse d2
+___mouse_up() {
+    chrome_shell mouse u u u u u u u u
     _activate_mouse_mode
 }
 
-_mouse_right2() {
-    chrome_shell mouse r2
+__mouse_down() {
+    chrome_shell mouse d d
     _activate_mouse_mode
 }
 
-_mouse_left2() {
-    chrome_shell mouse l2
+___mouse_down() {
+    chrome_shell mouse d d d d d d d d
+    _activate_mouse_mode
+}
+
+__mouse_right() {
+    chrome_shell mouse r r
+    _activate_mouse_mode
+}
+
+___mouse_right() {
+    chrome_shell mouse r r r r r r r r
+    _activate_mouse_mode
+}
+
+__mouse_left() {
+    chrome_shell mouse l l
+    _activate_mouse_mode
+}
+
+___mouse_left() {
+    chrome_shell mouse l l l l l l l l
     _activate_mouse_mode
 }
 
 if [[ "$SHELL" =~ "zsh" ]]
 then
     zle -N _deactivate_mouse_mode
-    zle -N _mouse_up2
-    zle -N _mouse_down2
-    zle -N _mouse_right2
-    zle -N _mouse_left2
+    zle -N __mouse_up
+    zle -N ___mouse_up
+    zle -N __mouse_down
+    zle -N ___mouse_down
+    zle -N __mouse_right
+    zle -N ___mouse_right
+    zle -N __mouse_left
+    zle -N ___mouse_left
 fi
 
 _activate_mouse_mode() {
@@ -73,21 +106,29 @@ _activate_mouse_mode() {
         then
             bindkey $key _deactivate_mouse_mode
         else
-            echo "'\"${key}\":_deactivate_mouse_mode'" #>/dev/null 2>&1
-            bind -x "'\"${key}\":_deactivate_mouse_mode'" #>/dev/null 2>&1
+            echo >/dev/null 2>&1
+            #bind "'"\"${key}\":\"_deactivate_mouse_mode\\C-m\""'"
         fi
     done
     if [[ "$SHELL" =~ "zsh" ]]
     then
-        bindkey "\e[A" _mouse_up2
-        bindkey "\e[B" _mouse_down2
-        bindkey "\e[C" _mouse_right2
-        bindkey "\e[D" _mouse_left2
+        bindkey "\e[A" __mouse_up
+        bindkey "\e[A\e[A" ___mouse_up
+        bindkey "\e[B" __mouse_down
+        bindkey "\e[B\e[B" ___mouse_down
+        bindkey "\e[C" __mouse_right
+        bindkey "\e[C\e[C" ___mouse_right
+        bindkey "\e[D" __mouse_left
+        bindkey "\e[D\e[D" ___mouse_left
     else
-        bind -x '"\e[A":_mouse_up'
-        bind -x '"\e[B":_mouse_down'
-        bind -x '"\e[C":_mouse_right'
-        bind -x '"\e[D":_mouse_left'
+        bind '"\e[A":"__mouse_up\C-m"' > /dev/null 2>&1
+        bind '"\e[B":"__mouse_down\C-m"' > /dev/null 2>&1
+        bind '"\e[C":"__mouse_right\C-m"' > /dev/null 2>&1
+        bind '"\e[D":"__mouse_left\C-m"' > /dev/null 2>&1
+        bind '"\e[A\e[A":"___mouse_up\C-m"' > /dev/null 2>&1
+        bind '"\e[B\e[B":"___mouse_down\C-m"' > /dev/null 2>&1
+        bind '"\e[C\e[C":"___mouse_right\C-m"' > /dev/null 2>&1
+        bind '"\e[D\e[D":"___mouse_left\C-m"' > /dev/null 2>&1
     fi
 
 }

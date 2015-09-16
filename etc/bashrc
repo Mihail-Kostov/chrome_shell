@@ -14,8 +14,9 @@ chrome_shell() {
         fi
         if [ "$1" = "deactivate" ]
         then
-            which $1 >/dev/null 2>&1
-            if [ "$?" = "1" ]
+            #which $1 >/dev/null 2>&1
+            #if [ "$?" = "1" ]
+            if ! [[ "$PS1" =~ "(chrome)" ]]
             then
                 echo "Usage: chrome_shell SUBCOMMAND [OPTIONS]"
                 echo "SUBCOMMAND: "
@@ -25,7 +26,7 @@ chrome_shell() {
                 echo "chrome_shell: error: Command \`deactivate\` can not be used."
                 return 1
             else
-                source "$ETC_DIR/activate"
+                source "$ETC_DIR/activate" >/dev/null 2>&1
                 deactivate
                 return 0
             fi

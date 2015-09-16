@@ -96,29 +96,27 @@ class Command(object):
         return
 
     def run_mouse(self):
-        arg = self.args[0]
         path = SCRIPT_DIR + "/move_mouse.scpt"
-        option = ""
-        if arg.lower() == "u" or arg.lower() == "up":
-            option = " u"
-        elif arg.lower() == "d" or arg.lower() == "down":
-            option = " d"
-        elif arg.lower() == "r" or arg.lower() == "right":
-            option = " r"
-        elif arg.lower() == "l" or arg.lower() == "left":
-            option = " l"
-        elif arg.lower() == "u2":
-            option = " u2"
-        elif arg.lower() == "d2":
-            option = " d2"
-        elif arg.lower() == "r2":
-            option = " r2"
-        elif arg.lower() == "l2":
-            option = " l2"
-        else :
-            path = ""
+        x = 0
+        y = 0
+        for key in self.args:
+            if key.lower() == "u" or key.lower() == "up":
+                y = y - 25
+            elif key.lower() == "d" or key.lower() == "down":
+                y = y + 25
+            elif key.lower() == "r" or key.lower() == "right":
+                x = x + 25
+            elif key.lower() == "l" or key.lower() == "left":
+                x = x - 25
 
-        if path != "" and os.path.exists(path) :
+        def convert_str(num):
+            if num >= 0:
+                return "+%d" %num
+            else:
+                return "%d" %num
+
+        if (x != 0 or y != 0) and os.path.exists(path) :
+            option = " %s %s" %(convert_str(x), convert_str(y))
             self.execute(path + option)
         else:
             self.parser.error(util.get_err_option(self.name))

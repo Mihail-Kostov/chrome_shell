@@ -3,6 +3,10 @@
 echo "deactivate chrome mode."
 
 PS1=`echo $PS1 | sed -e "s/(chrome)//"`
+if [[ "$SHELL" =~ "bash" ]]
+then
+    PS1=$PS1" "
+fi
 export PS1=$PS1
 
 unset -f activate
@@ -40,8 +44,8 @@ then
     bindkey "^[\e[C" dammy
     bindkey "^[\e[D" dammy
 else
-    bind -r "\M-\e[A"
-    bind -r "\M-\e[B"
-    bind -r "\M-\e[C"
-    bind -r "\M-\e[D"
+    bind -r "\e\e[A"
+    bind -r "\e\e[B"
+    bind -r "\e\e[C"
+    bind -r "\e\e[D"
 fi
