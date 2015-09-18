@@ -10,6 +10,10 @@ Please add the following line to the end of your ~/.bashrc:
 
     [[ -s <YOUR_CLONE_DIR>/etc/bashrc ]] && source <YOUR_CLONE_DIR>/etc/bashrc
 
+#Demo
+
+![Output sample](https://github.com/kota999/chrome_shell/raw/master/short_demo_chrome_mode.gif)
+
 ##Simple Usage
 
 activate chrome mode.
