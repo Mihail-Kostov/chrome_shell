@@ -1,7 +1,8 @@
 # chrome_shell
 
-this trminal command operate google chrome app on Mac OS X.
-this command is tested on OSX 10.9.5, zsh 5.0.2 and bash 3.2.53 .
+This trminal command operate google chrome app on Mac OS X.
+
+This command is tested on OSX 10.9.5, zsh 5.0.2 and bash 3.2.53 .
 
 ##Instllation
 
