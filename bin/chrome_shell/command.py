@@ -88,6 +88,8 @@ class Command(object):
             path = path + " tc"
         elif arg.lower() == "rc" or arg.lower() == "right" or arg.lower() == "r":
             path = path + " rc"
+        elif arg.lower() == "ctn" or arg.lower() == "tabnew" or arg.lower() == "tab_new" or arg.lower() == "tn":
+            path = path + " ctn"
         else:
             self.parser.error(util.get_err_option(self.name))
             return

@@ -12,6 +12,9 @@ on run argv
     else if x = "rc" then
         set x to "c"
         right_click(x)
+    else if x = "ctn" then
+        set x to "c"
+        click_tab_new(x)
     end if
 
     delay 0.2
@@ -44,6 +47,23 @@ on right_click(x)
         key up control
     end tell
 end right_click
+
+on click_tab_new(x)
+    tell application "Finder"
+        set thisFolder to parent of (path to me) as text
+    end tell
+    set thisFolder to replaceText(thisFolder, ":", "/")
+    set thisFolder to replaceText(thisFolder, "Macintosh HD", "")
+
+    tell application "System Events"
+        key down command
+        key down shift
+        do shell script thisFolder  & "cliclick " & x & ":+0,+0"
+        do shell script thisFolder  & "cliclick " & x & ":+0,+0"
+        key up command
+        key up shift
+    end tell
+end click_tab_new
 
 on replaceText(theText, serchStr, replaceStr)
     set tmp to AppleScript's text item delimiters

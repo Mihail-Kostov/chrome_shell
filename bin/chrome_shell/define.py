@@ -13,7 +13,7 @@ command_fargs = {"click": True, "mouse": True, "wmove": True,
     "next": False, "reload": False, "abort": False, "home": False,
     "start": False, "restart": False, "stop": False, "wopen": False,
     "wclose": False, "search": True, "url": True, "typo": True}
-command_options = {"click": ["c", "dc", "tc", "rc"],
+command_options = {"click": ["c", "dc", "tc", "rc", "ctn"],
     "mouse": ["u", "d", "r", "l"], "wmove": ["r", "l"],
     "scroll": ["u", "d", "r", "l"],
     "wsize": ["hu", "hd", "wu", "wd", "min", "max", "full", "norm"],

@@ -19,7 +19,7 @@ def get_message(command_name):
     msg = ""
     if command_name == "click":
         msg += "      %s " % command_name + get_option_list(command_name) + "\n"
-        msg += "click on mouse cursor, single/double/triple/right." + "\n"
+        msg += "click on mouse cursor, single/double/triple/right/new-tab." + "\n"
     elif command_name == "mouse":
         msg += "      %s "  % command_name + get_option_list(command_name) + "\n"
         msg += "move mouse cursor, upper/lower/right/left." + "\n"
