@@ -33,12 +33,12 @@ deactivate chrome mode.
 
 operate chrome window.
 
-    wopen                  # open chrome window
-    wclose                 # close chrome window
-    tab [new|rm|next|back] # tab operation
-    search <keyword>       # web search
-    click [c|dc|tc|rc]     # single/double/triple/right click
-    back                   # move before web page
+    wopen                      # open chrome window
+    wclose                     # close chrome window
+    tab [new|rm|next|back]     # tab operation
+    search <keyword>           # web search
+    click [c|dc|tc|rc|ctn]     # single/double/triple/right click, click new tab
+    back                       # move before web page
     next                   # move next web page
 
 control mouse on chrome mode.
@@ -59,9 +59,9 @@ activate chrome mode. `chrome_shell` command can be ommited in this mode.
 
 deactivate chrome mode. in chrome mode, this command can be used.
 
-    click [c|dc|tc|rc]
+    click [c|dc|tc|rc|ctn]
 
-click on mouse cursor, single/double/triple/right.
+click on mouse cursor, single/double/triple/right/tab-new.
 
     mouse [u|d|r|l]
 
